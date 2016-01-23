@@ -3,10 +3,13 @@
 // Config
 require('dotenv').load();
 
-// Requires
+// Dependencies Requires
 var Hapi           = require('hapi');
 var Path           = require('path');
 var dateFormat     = require('dateformat');
+
+// Crappy homebrew
+var urbanThings = require('./urbanthings')(process.env.urbanKey);
 
 // format
 var format = 'd mmm HH:MM:ss';
@@ -32,6 +35,43 @@ server.connection({
 
 // Hapi Log
 server.log(['error', 'database', 'read']);
+
+// Planning
+server.route({
+    method: 'GET',
+    path: '/planning/{from}/{to}',
+    handler: (request, reply) => {
+
+      var fromName = request.params.from;
+      var toName = request.params.to;
+
+      urbanThings.getStation(fromName, function(error, response, body){
+        if (error || !body.success) return false;
+        // var from = {
+        //   lat: body.data.placePoints[0].lat,
+        //   lng: body.data.placePoints[0].lng
+        // };
+        var from = body.data.placePoints[0].primaryCode;
+        urbanThings.getStation(toName, function(error, response, body){
+          if (error || !body.success) return false;
+          // var to = {
+          //   lat: body.data.placePoints[0].lat,
+          //   lng: body.data.placePoints[0].lng
+          // };
+          var to = body.data.placePoints[0].primaryCode;
+          urbanThings.journeyDirect(from, to, function(error, response, body){
+            console.log(response);
+          });
+        });
+      });
+
+      reply({
+          "final_destination" : 'London',
+          "sheduled_time" : (new Date()).toString(),
+          "actual_time" : (new Date()).toString(),
+      });
+    },
+  });
 
 // Start Hapi
 server.start(function(err) {
