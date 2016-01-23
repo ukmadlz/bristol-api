@@ -52,6 +52,7 @@ server.route({
         //   lng: body.data.placePoints[0].lng
         // };
         var from = body.data.placePoints[0].primaryCode;
+        console.log(from);
         urbanThings.getStation(toName, function(error, response, body){
           if (error || !body.success) return false;
           // var to = {
@@ -68,9 +69,9 @@ server.route({
       reply({
           "start_destination" : request.params.from,
           "final_destination" : 'London',
-          "sheduled_time" : (new Date()).toString(),
-          "actual_time" : (new Date()).toString(),
-      });
+          "sheduled_time" : (new Date()).toISOString(),
+          "actual_time" : (new Date()).toISOString(),
+      }).code( 200 );
     },
   });
 

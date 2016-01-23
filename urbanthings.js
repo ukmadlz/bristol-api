@@ -36,14 +36,14 @@ module.exports = function(apiKey) {
 
     journeyDirect: function(from, to, callback) {
       var opts = {
-        url: this.baseUrl + this.version + '/static/places/List',
-        method: 'GET',
-        json: true,
-        qs: {
-          name: name,
-          placepointtypes: 102,
-          apikey:apiKey
-        }
+        // url: this.baseUrl + this.version + '/static/places/List',
+        // method: 'GET',
+        // json: true,
+        // qs: {
+        //   name: name,
+        //   placepointtypes: 102,
+        //   apikey:apiKey
+        // }
       };
 
       return request(opts, function(error, response, body) {
