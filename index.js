@@ -66,6 +66,7 @@ server.route({
       });
 
       reply({
+          "start_destination" : request.params.from,
           "final_destination" : 'London',
           "sheduled_time" : (new Date()).toString(),
           "actual_time" : (new Date()).toString(),
