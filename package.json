@@ -1,0 +1,27 @@
+{
+  "name": "bristol-api",
+  "version": "0.0.1",
+  "description": "A hack for the Keep Bristol Moving event",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start-dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ukmadlz/bristol-api.git"
+  },
+  "author": "Mike Elsmore <mike@elsmore.me>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ukmadlz/bristol-api/issues"
+  },
+  "homepage": "https://github.com/ukmadlz/bristol-api#readme",
+  "dependencies": {
+    "dateformat": "^1.0.12",
+    "dotenv": "^2.0.0",
+    "hapi": "^12.1.0",
+    "path": "^0.12.7"
+  }
+}
