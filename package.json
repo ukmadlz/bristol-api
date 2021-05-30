@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/ukmadlz/bristol-api#readme",
   "dependencies": {
-    "dateformat": "^1.0.12",
+    "dateformat": "^2.0.0",
     "dotenv": "^2.0.0",
     "hapi": "^12.1.0",
     "lodash": "^4.0.0",
